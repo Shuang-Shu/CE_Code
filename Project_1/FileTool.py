@@ -16,7 +16,7 @@ class FileTool:
         return
 
     def getPath(self, birdName, type='Video'):
-        #根据birdName从文件系统读取视频/音频，返回视频/音频文件的字节流列表
+        #根据birdName从文件系统读取视频/音频，返回视频/音频文件的路径列表
         #鸟类视频的命名格式为:Name_[编号].mp4
         #例如：麻雀_1.mp4
         #鸟类音频的命名格式为:Name_[编号].mp3
