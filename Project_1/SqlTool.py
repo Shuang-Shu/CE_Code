@@ -54,20 +54,15 @@ class SQLTool:
         result=self.cursor.fetchall()
         return result
 
-    '''def create(self, attributeNames, attributesTypes):
-        #根据attributeNames新建一个关系列表，attributeNames为tuple对象，attributesTypes为数据类型的元组，其中元素为str类型
-        if(not self.check()):
-            return
-        self.cursor.execute('CREATE TABLE '+self.tableName+'();')
-        return'''
-
     def update(self, attributes):
         #更新birdName的关系，attributes为tuple对象
         if(not self.check()):
             return
-        for i in range(len(self.attributeName)):
-            instruction="UPDATE "+self.tableName+' '+self.attributeName[i]+'='+attributes[i]+';'
+        for i in range(1, len(self.attributeName)):
+            instruction="UPDATE "+self.tableName+' SET '+self.attributeName[i]+'=\''+attributes[i]+'\' WHERE '+self.attributeName[0]+'=\''+attributes[0]+'\';'
+            print(instruction)
             self.cursor.execute(instruction)
+            self.con.commit()
         return
 
     def insert(self, attributes):
