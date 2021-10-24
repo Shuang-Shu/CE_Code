@@ -5,10 +5,7 @@ class FileTool:
     #域
     pathPrefix=None
     #方法
-    def __init__(self):
-        return
-
-    def __init__(self, aPath):
+    def __init__(self, aPath='Resource'):
         self.pathPrefix=aPath
     
     def setPathPrefix(self, aPath):
@@ -24,13 +21,10 @@ class FileTool:
         if self.pathPrefix==None:
             print('先使用self.setPathPrefix设置视频/视频文件路径前缀')
             return
-        suffix='mp4'
-        if(type=='Audio'):
-            suffix='mp3'
-        path=self.pathPrefix+'/'+type+'/'
-        fileNameList=glob.glob(path+birdName+'_*.'+suffix)
-        for fileName in fileNameList:
-            fileName=path+fileName
+        path=self.pathPrefix+'\\'+type+'\\'
+        print(path)
+        fileNameList=glob.glob(path+birdName+'_*')
+        print(fileNameList)
         return fileNameList
 
     def getFileByPath(self, filePathList):
