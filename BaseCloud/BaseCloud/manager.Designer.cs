@@ -28,20 +28,66 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.管理ToolStripMenuItem,
+            this.统计ToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(584, 25);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // 管理ToolStripMenuItem
+            // 
+            this.管理ToolStripMenuItem.Name = "管理ToolStripMenuItem";
+            this.管理ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.管理ToolStripMenuItem.Text = "管理";
+            // 
+            // 统计ToolStripMenuItem
+            // 
+            this.统计ToolStripMenuItem.Name = "统计ToolStripMenuItem";
+            this.统计ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.统计ToolStripMenuItem.Text = "统计";
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(0, 28);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(584, 330);
+            this.panel1.TabIndex = 1;
             // 
             // manager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "manager";
             this.Text = "数据管理";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 统计ToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
     }
 }

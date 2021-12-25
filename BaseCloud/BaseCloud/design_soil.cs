@@ -16,7 +16,6 @@ namespace BaseCloud
         public design_soil()
         {
             InitializeComponent();
-            dataGridView1.ReadOnly = true;
         }
 
         public void readDB()
@@ -183,7 +182,7 @@ namespace BaseCloud
                 refreshPara();
         }
 
-        private void refreshPara()
+        public void refreshPara()
         {
             string city = comboBox1.Text;
             string soilType = comboBox2.Text;
@@ -206,6 +205,94 @@ namespace BaseCloud
             textBox5.Text = reader[3].ToString();
             textBox6.Text = reader[4].ToString();
             reader.Close();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            InsertSoil temp = new InsertSoil(this);
+            temp.Show();
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            string area = comboBox1.Text;
+            string soilType = comboBox2.Text;
+            string soil = comboBox3.Text;
+
+            double[] para = new double[5];
+            try
+            {
+                para[0] = double.Parse(textBox1.Text);
+                para[1] = double.Parse(textBox2.Text);
+                para[2] = double.Parse(textBox4.Text);
+                para[3] = double.Parse(textBox5.Text);
+                para[4] = double.Parse(textBox6.Text);
+            }
+            catch
+            {
+                MessageBox.Show("检查土层参数的合法性");
+                return;
+            }
+            design parent = stageDataTran.parent;
+            string cmdStr = "DELETE FROM soil WHERE" +
+                " city= N\'" + area + "\' and" +
+                " soilType= N\'" + soilType + "\' and" +
+                " soil= N\'" + soil + "\';";
+            SqlCommand cmd = new SqlCommand(cmdStr, parent.myconn);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                MessageBox.Show("检查地区、土类与土种是否已选择");
+                return;
+            }
+            // 参数
+            cmdStr = "INSERT INTO soil VALUES(" +
+                "N\'" + area + "\'," +
+                "N\'" + soilType + "\'," +
+                "N\'" + soil + "\'," +
+                para[0].ToString() + "," +
+                para[1].ToString() + "," +
+                para[2].ToString() + "," +
+                para[3].ToString() + "," +
+                para[4].ToString() +
+                "); ";
+            cmd = new SqlCommand(cmdStr, parent.myconn);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                MessageBox.Show("检查地区、土类和土种是否有重复");
+                return;
+            }
+            this.Close();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            string area = comboBox1.Text;
+            string soilType = comboBox2.Text;
+            string soil = comboBox3.Text;
+            design parent = stageDataTran.parent;
+            string cmdStr = "DELETE FROM soil WHERE" +
+                " city= N\'" + area + "\' and" +
+                " soilType= N\'" + soilType + "\' and" +
+                " soil= N\'" + soil + "\';";
+            SqlCommand cmd = new SqlCommand(cmdStr, parent.myconn);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                MessageBox.Show("检查地区、土类与土种是否已选择");
+                return;
+            }
+            refreshPara();
         }
     }
 }

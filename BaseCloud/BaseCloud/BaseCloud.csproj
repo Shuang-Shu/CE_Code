@@ -90,6 +90,12 @@
     <Compile Include="confirm.Designer.cs">
       <DependentUpon>confirm.cs</DependentUpon>
     </Compile>
+    <Compile Include="InsertSoil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InsertSoil.Designer.cs">
+      <DependentUpon>InsertSoil.cs</DependentUpon>
+    </Compile>
     <Compile Include="loadDesign.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="confirm.resx">
       <DependentUpon>confirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertSoil.resx">
+      <DependentUpon>InsertSoil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="loadDesign.resx">
       <DependentUpon>loadDesign.cs</DependentUpon>

@@ -188,10 +188,12 @@ namespace BaseCloud
         {
             textBox10.Text += ">>>\r\n";
             double sp = singlePile();
-            showResult("单桩承载力", sp, "kN");
+            showResult("单桩承载力:", sp, "kN");
             double[] topVerify = pileTopVerify();
-            showResult("最大单桩压应力", topVerify[0], "kPa");
-            showResult("最小单桩压应力", topVerify[1], "kPa");
+            showResult("最大单桩压应力:", topVerify[0], "kPa");
+            showResult("最小单桩压应力:", topVerify[1], "kPa");
+            double settlement = getSettlement();
+            showResult("整体沉降为:", settlement, "mm");
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -495,6 +497,89 @@ namespace BaseCloud
             pen1.Dispose();
             pen2.Dispose();
             g.Dispose();
+        }
+
+        public double getSettlement()
+        {
+            int a = stageDataTran.parent.d_p.dataGridView1.Rows.Count - 1;
+            double l = 0;
+            double b = 0;
+            double d = 0;
+            double N = 0;
+            double[] sd = new double[a];
+            double[,] cs = new double[a, 2];
+
+            try
+            {
+                l = double.Parse(textBox1.Text);
+                b = double.Parse(textBox9.Text);
+                d = double.Parse(textBox4.Text);
+                N = double.Parse(textBox5.Text);
+            }catch
+            {
+                MessageBox.Show("检查长款是否输入");
+                return 0;
+            }
+            double fyc = 0;
+            double zyc = 0;
+
+            try
+            {
+                for (int i = 0; i < a; ++i)
+                {
+                    sd[i] = double.Parse((string)(stageDataTran.parent.d_p.dataGridView1.Rows[i].Cells[3].Value));
+                    cs[i, 0]= double.Parse((string)(stageDataTran.parent.d_p.dataGridView1.Rows[i].Cells[2].Value));
+                    cs[i, 1]= double.Parse((string)(stageDataTran.parent.d_p.dataGridView1.Rows[i].Cells[6].Value));
+                }
+            }
+            catch
+            {
+                MessageBox.Show("检查厚度数据是否合法");
+                return 0;
+            }
+            double gamma0 = cs[0, 0];
+            fyc = (N + (d * l * b) * 20 - gamma0 * l * b) / (l * b);
+            zyc = gamma0 * d;
+            return caculateSettlement(a, l, b, fyc, zyc, sd, cs);
+        }
+
+        public double caculateSettlement(int a, double l, double b, double fyc, double zyc, double[] sd, double[,] cs)
+        //a为土层个数；l为基础底面长边；b为基础底面短边；fyc表示基础底面附加应力；zyc表示基础底面自重应力；sd{i}表示分层土层深度(i表示土层编号）；cs[i,j]表示第i号土层的第j个参数（参数0表示重度，参数1表示压缩模量）
+        {
+            double z = 0;
+            double ys = 0;
+            for (int i = 0; i < a; i++)
+            {
+                z = z + sd[i];
+                double m = z / b;
+                double n = l / b;
+                double c = 1 / (2 * Math.PI) * (m * n * (1 + Math.Pow(n, 2) + 2 * Math.Pow(m, 2)) / (Math.Sqrt(1 + Math.Pow(m, 2) + Math.Pow(n, 2)) * (Math.Pow(m, 2) + Math.Pow(n, 2)) * (1 + Math.Pow(m, 2)))) + Math.Atan(n / (m * Math.Sqrt(1 + Math.Pow(m, 2) + Math.Pow(n, 2))));
+                double[] zy = new double[a];
+                double[] fy = new double[a];
+                double[] zyavg = new double[a];
+                double[] fyavg = new double[a];
+                if (i == 0)
+                {
+                    zy[i] = zyc + cs[i, 0] * sd[i];
+                    fy[i] = 4 * c * fyc;
+                    zyavg[i] = (zy[i] + zyc) / 2;
+                    fyavg[i] = (fy[i] + fyc) / 2;
+                    ys = ys + ((fyavg[i] + zyavg[i]) / 2 - zyavg[i]) / cs[i, 1] * sd[i];
+                }
+                if (i > 0)
+                {
+                    zy[i] = zy[i - 1] + cs[i, 0] * sd[i];
+                    fy[i] = 4 * c * fyc;
+                    if (fy[i] < zy[i])
+                        break;
+                    zyavg[i] = (zy[i] + zy[i - 1]) / 2;
+                    fyavg[i] = (fy[i] + fy[i - 1]) / 2;
+                    ys = ys + ((fyavg[i] + zyavg[i]) / 2 - zyavg[i]) / cs[i, 1] * sd[i];
+                }
+                if (fy[i] < zy[i])
+                    break;
+            }
+            return ys;
         }
     }
 }
