@@ -234,42 +234,29 @@ namespace BaseCloud
                 return;
             }
             design parent = stageDataTran.parent;
-            string cmdStr = "DELETE FROM soil WHERE" +
-                " city= N\'" + area + "\' and" +
-                " soilType= N\'" + soilType + "\' and" +
-                " soil= N\'" + soil + "\';";
+            string cmdStr = "UPDATE soil SET " +
+                            " eRate =" + para[0] + "," +
+                            " gamma =" + para[1] + "," +
+                            " pc =" + para[2] + "," +
+                            " pe =" + para[3] + "," +
+                            " E =" + para[4] +
+                            " WHERE" +
+                            " city = N\'" + area + "\' AND" +
+                            " soilType = N\'" + soilType + "\' AND" +
+                            " soil = N\'" + soil + "\'";
             SqlCommand cmd = new SqlCommand(cmdStr, parent.myconn);
             try
             {
                 cmd.ExecuteNonQuery();
             }
-            catch
+            catch(SqlException ex)
             {
-                MessageBox.Show("检查地区、土类与土种是否已选择");
+                MessageBox.Show("来自数据库的错误:" + ex.Errors[0].Message);
+                if (ex.Errors.Count>1)
+                    MessageBox.Show("来自数据库的错误:" + ex.Errors[1].Message);
                 return;
             }
-            // 参数
-            cmdStr = "INSERT INTO soil VALUES(" +
-                "N\'" + area + "\'," +
-                "N\'" + soilType + "\'," +
-                "N\'" + soil + "\'," +
-                para[0].ToString() + "," +
-                para[1].ToString() + "," +
-                para[2].ToString() + "," +
-                para[3].ToString() + "," +
-                para[4].ToString() +
-                "); ";
-            cmd = new SqlCommand(cmdStr, parent.myconn);
-            try
-            {
-                cmd.ExecuteNonQuery();
-            }
-            catch
-            {
-                MessageBox.Show("检查地区、土类和土种是否有重复");
-                return;
-            }
-            this.Close();
+            refreshPara();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -287,12 +274,17 @@ namespace BaseCloud
             {
                 cmd.ExecuteNonQuery();
             }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("来自数据库的错误:" + ex.Errors[0].Message);
+                return;
+            }
             catch
             {
                 MessageBox.Show("检查地区、土类与土种是否已选择");
                 return;
             }
-            refreshPara();
+            refreshSoilType(null, null);
         }
     }
 }

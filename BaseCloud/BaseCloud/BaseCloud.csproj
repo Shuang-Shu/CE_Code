@@ -55,6 +55,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -89,6 +90,18 @@
     </Compile>
     <Compile Include="confirm.Designer.cs">
       <DependentUpon>confirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager_sttc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager_sttc.Designer.cs">
+      <DependentUpon>Manager_sttc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manger_mng.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manger_mng.Designer.cs">
+      <DependentUpon>Manger_mng.cs</DependentUpon>
     </Compile>
     <Compile Include="InsertSoil.cs">
       <SubType>Form</SubType>
@@ -158,6 +171,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="manager.resx">
       <DependentUpon>manager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager_sttc.resx">
+      <DependentUpon>Manager_sttc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manger_mng.resx">
+      <DependentUpon>Manger_mng.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="newDesigner.resx">
       <DependentUpon>newDesigner.cs</DependentUpon>

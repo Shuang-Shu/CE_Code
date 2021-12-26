@@ -58,12 +58,12 @@ namespace BaseCloud
             {
                 cmd.ExecuteNonQuery();
             }
-            catch
+            catch(SqlException ex)
             {
-                MessageBox.Show("检查地区、土类和土种是否有重复");
+                MessageBox.Show("来自数据库的通知:"+ex.Errors[1].Message);
                 return;
             }
-            pre.refreshPara();
+            pre.refreshSoilType(null, null);
             this.Close();
         }
 

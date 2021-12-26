@@ -51,12 +51,14 @@
             this.管理ToolStripMenuItem.Name = "管理ToolStripMenuItem";
             this.管理ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.管理ToolStripMenuItem.Text = "管理";
+            this.管理ToolStripMenuItem.Click += new System.EventHandler(this.管理ToolStripMenuItem_Click);
             // 
             // 统计ToolStripMenuItem
             // 
             this.统计ToolStripMenuItem.Name = "统计ToolStripMenuItem";
             this.统计ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.统计ToolStripMenuItem.Text = "统计";
+            this.统计ToolStripMenuItem.Click += new System.EventHandler(this.统计ToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -73,7 +75,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "manager";
             this.Text = "数据管理";
             this.menuStrip1.ResumeLayout(false);
@@ -89,5 +91,7 @@
         private System.Windows.Forms.ToolStripMenuItem 管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 统计ToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
+        public Manager_sttc mstc;
+        public Manger_mng mng;
     }
 }

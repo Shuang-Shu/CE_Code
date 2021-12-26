@@ -35,3 +35,5 @@ E:\TJ_GeoMD\BaseCloud\BaseCloud\obj\Debug\BaseCloud.loadDesign.resources
 E:\TJ_GeoMD\BaseCloud\BaseCloud\obj\Debug\BaseCloud.newDesigner.resources
 E:\TJ_GeoMD\BaseCloud\BaseCloud\obj\Debug\BaseCloud.confirm.resources
 E:\TJ_GeoMD\BaseCloud\BaseCloud\obj\Debug\BaseCloud.InsertSoil.resources
+E:\TJ_GeoMD\BaseCloud\BaseCloud\obj\Debug\BaseCloud.Manager_sttc.resources
+E:\TJ_GeoMD\BaseCloud\BaseCloud\obj\Debug\BaseCloud.Manger_mng.resources
