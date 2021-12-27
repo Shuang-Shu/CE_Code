@@ -13,7 +13,7 @@ namespace BaseCloud
 {
     public partial class design : Form
     {
-        public design()
+        public design(register rgst0)
         {
             InitializeComponent();
             stageDataTran.parent = this;
@@ -29,6 +29,7 @@ namespace BaseCloud
             d_d.Show();
             d_s.TopLevel = false;
             d_s.Parent = panel1;
+            rgst = rgst0;
 
             soilData = this.d_p.dataGridView1;
         }
@@ -126,6 +127,12 @@ namespace BaseCloud
             panel1.Controls.Clear();
             panel1.Controls.Add(d_s);
             d_s.Show();
+        }
+
+        private void 返回登录ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            rgst.Show();
         }
     }
 }

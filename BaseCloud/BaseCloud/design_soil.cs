@@ -23,6 +23,7 @@ namespace BaseCloud
             design parent = stageDataTran.parent;
             SqlCommand cmd = new SqlCommand("SELECT DISTINCT city FROM soil;", parent.myconn);
             SqlDataReader reader = cmd.ExecuteReader();
+            comboBox1.Items.Clear();
             while (reader.Read())
                 comboBox1.Items.Add(reader[0]);
             reader.Close();
@@ -64,44 +65,10 @@ namespace BaseCloud
 
         private void button3_Click(object sender, EventArgs e)
         {
-            int idx = 0;
-            int newRowNums = dataGridView1.Rows.Count-2;
-            
-            try
-            {
-                idx = int.Parse(this.textBox7.Text) - 1;
-                if (idx > newRowNums)
-                    throw new Exception();
-            }
-            catch
-            {
-                MessageBox.Show("输入正确的编号！");
-                return;
-            }
-            dataGridView1.Rows.RemoveAt(idx);
-            for (int i = idx; i < newRowNums; ++i)
-                dataGridView1.Rows[i].Cells[0].Value = (int.Parse((string)dataGridView1.Rows[i].Cells[0].Value) - 1).ToString();
-
-
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            int idx = 0;
-            try
-            {
-                idx = int.Parse(this.textBox7.Text)-1;
-            }
-            catch
-            {
-                MessageBox.Show("输入正确的编号！");
-                return;
-            }
-            int num = 6;
-            double[] datas = new double[num];
-            getData(datas);
-            for (int i = 0; i < num; ++i)
-                this.dataGridView1.Rows[idx].Cells[i + 1].Value = datas[i].ToString();
         }
 
         int getData(double[] datas)

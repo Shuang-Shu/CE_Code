@@ -223,6 +223,7 @@ namespace BaseCloud
                 ldsg.Show();
             else
                 ldsg = new loadDesign(this);
+            // loadDesig为导入设计用的窗口
         }
 
         private void deleteDnum(string dnum)

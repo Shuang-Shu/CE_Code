@@ -19,7 +19,7 @@ namespace BaseCloud
         {
             InitializeComponent();
             string[] temp1 = { "地区", "设计者专业", "设计者职称" };
-            string[] temp2 = { "饼图", "条状统计图" };
+            string[] temp2 = { "饼图", "条形统计图" };
             for (int i = 0; i < temp1.Length; ++i)
                 comboBox1.Items.Add(temp1[i]);
             for (int i = 0; i < temp2.Length; ++i)
@@ -59,9 +59,34 @@ namespace BaseCloud
         private void button1_Click(object sender, EventArgs e)
         {
             design parent = stageDataTran.parent;
-            string cmdStr = "SELECT area, COUNT(area)"+
-            " FROM design"+
-            " GROUP BY area; ";
+            string temp = comboBox1.Text;
+            string cmdStr;
+            if (temp == "地区")
+            {
+                cmdStr = "SELECT area, COUNT(area)" +
+                " FROM design" +
+                " GROUP BY area; ";
+            }
+            else if (temp == "设计者专业")
+            {
+                cmdStr = "SELECT designer.major, COUNT(designer.major)" +
+                "  FROM" +
+                " design JOIN designer ON design.workerno = designer.workerno" +
+                " GROUP BY designer.major;";
+            }
+            else if (temp == "设计者职称")
+            {
+                cmdStr = "SELECT designer.title, COUNT(designer.title)" +
+                "  FROM" +
+                " design JOIN designer ON design.workerno = designer.workerno" +
+                " GROUP BY designer.title;";
+            }
+            else
+            {
+                MessageBox.Show("请选择统计类别！");
+                return;
+            }
+            
             SqlCommand cmd = new SqlCommand(cmdStr, parent.myconn);
             SqlDataReader reader = cmd.ExecuteReader();
             ArrayList cityList = new ArrayList();
@@ -71,7 +96,7 @@ namespace BaseCloud
                 cityList.Add((string)reader[0]);
                 numList.Add((int)reader[1]);
             }
-
+            reader.Close();
             string[] names = new string[numList.Count];
             int[] nums = new int[numList.Count];
             for (int i = 0; i < numList.Count; ++i)
@@ -79,7 +104,15 @@ namespace BaseCloud
                 nums[i] = (int)numList[i];
                 names[i] = (string)cityList[i];
             }
-            drawchart(chart1, names, nums, "hello", 1);
+            if (comboBox2.Text == "条形统计图")
+                drawchart(chart1, names, nums, comboBox1.Text + "在所有设计中占比", 0);
+            else
+                drawchart(chart1, names, nums, comboBox1.Text + "在所有设计中占比", 1);
+        }
+
+        private void areaSearch(string[] names, int[] nums)
+        {
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

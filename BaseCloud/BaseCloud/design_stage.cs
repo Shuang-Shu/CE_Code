@@ -188,6 +188,7 @@ namespace BaseCloud
             stageDataTran.dw = dw;
             stageDataTran.dwl = dwl;
             stageDataTran.ZJ = ZJ;
+            // stageDataTran为用于在不同窗口间传递数据的静态类
         }
 
         private void textBox11_TextChanged(object sender, EventArgs e)

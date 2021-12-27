@@ -32,6 +32,7 @@
             this.管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.返回登录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,7 +40,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.管理ToolStripMenuItem,
-            this.统计ToolStripMenuItem});
+            this.统计ToolStripMenuItem,
+            this.返回登录ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(584, 25);
@@ -67,6 +69,13 @@
             this.panel1.Size = new System.Drawing.Size(584, 330);
             this.panel1.TabIndex = 1;
             // 
+            // 返回登录ToolStripMenuItem
+            // 
+            this.返回登录ToolStripMenuItem.Name = "返回登录ToolStripMenuItem";
+            this.返回登录ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.返回登录ToolStripMenuItem.Text = "返回登录";
+            this.返回登录ToolStripMenuItem.Click += new System.EventHandler(this.返回登录ToolStripMenuItem_Click);
+            // 
             // manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -93,5 +102,7 @@
         private System.Windows.Forms.Panel panel1;
         public Manager_sttc mstc;
         public Manger_mng mng;
+        private System.Windows.Forms.ToolStripMenuItem 返回登录ToolStripMenuItem;
+        public register rgst;
     }
 }

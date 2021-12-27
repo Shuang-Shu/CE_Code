@@ -12,7 +12,7 @@ namespace BaseCloud
 {
     public partial class manager : Form
     {
-        public manager()
+        public manager(register rgst0)
         {
             InitializeComponent();
             mstc = new Manager_sttc();
@@ -21,6 +21,7 @@ namespace BaseCloud
             mng.TopLevel = false;
             mstc.Parent = panel1;
             mng.Parent = panel1;
+            rgst = rgst0;
         }
 
         private void 管理ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -35,6 +36,12 @@ namespace BaseCloud
             panel1.Controls.Clear();
             panel1.Controls.Add(mstc);
             mstc.Show();
+        }
+
+        private void 返回登录ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            rgst.Show();
         }
     }
 }

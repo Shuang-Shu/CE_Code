@@ -37,6 +37,8 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GroupBox0 = new System.Windows.Forms.GroupBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -57,15 +59,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.GroupBox0.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -134,9 +130,6 @@
             // 
             // GroupBox0
             // 
-            this.GroupBox0.Controls.Add(this.button6);
-            this.GroupBox0.Controls.Add(this.button5);
-            this.GroupBox0.Controls.Add(this.button1);
             this.GroupBox0.Controls.Add(this.comboBox3);
             this.GroupBox0.Controls.Add(this.label3);
             this.GroupBox0.Controls.Add(this.comboBox2);
@@ -152,11 +145,31 @@
             this.GroupBox0.TabStop = false;
             this.GroupBox0.Text = "从数据库选取土种";
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(171, 22);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 39);
+            this.button6.TabIndex = 9;
+            this.button6.Text = "删除";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(9, 22);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 39);
+            this.button5.TabIndex = 8;
+            this.button5.Text = "更新";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(166, 19);
+            this.button1.Location = new System.Drawing.Point(90, 22);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 21);
+            this.button1.Size = new System.Drawing.Size(75, 39);
             this.button1.TabIndex = 7;
             this.button1.Text = "上传";
             this.button1.UseVisualStyleBackColor = true;
@@ -165,7 +178,7 @@
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(40, 66);
+            this.comboBox3.Location = new System.Drawing.Point(73, 65);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(120, 20);
@@ -175,7 +188,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 69);
+            this.label3.Location = new System.Drawing.Point(40, 68);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
@@ -185,7 +198,7 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(40, 42);
+            this.comboBox2.Location = new System.Drawing.Point(73, 41);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(120, 20);
@@ -195,7 +208,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 46);
+            this.label2.Location = new System.Drawing.Point(40, 45);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
@@ -205,7 +218,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(40, 20);
+            this.comboBox1.Location = new System.Drawing.Point(73, 19);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(120, 20);
@@ -215,7 +228,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 23);
+            this.label1.Location = new System.Drawing.Point(40, 22);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
@@ -354,35 +367,16 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "重度(kN/m^3)";
             // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(458, 307);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(104, 21);
-            this.textBox7.TabIndex = 13;
-            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(7, 19);
+            this.button2.Location = new System.Drawing.Point(456, 295);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(74, 45);
+            this.button2.Size = new System.Drawing.Size(106, 45);
             this.button2.TabIndex = 3;
             this.button2.Text = "插入";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(86, 19);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(74, 45);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "删除";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label9
             // 
@@ -396,9 +390,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.button6);
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Location = new System.Drawing.Point(9, 385);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
@@ -408,57 +402,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "操作";
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(164, 19);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(74, 45);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "更新";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(456, 288);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(95, 12);
-            this.label11.TabIndex = 12;
-            this.label11.Text = "编号(更新/删除)";
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(166, 42);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 20);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "更新";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click_1);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(166, 66);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 20);
-            this.button6.TabIndex = 9;
-            this.button6.Text = "删除";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // design_soil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(573, 469);
             this.ControlBox = false;
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.textBox7);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.GroupBox0);
             this.Controls.Add(this.dataGridView1);
@@ -498,16 +450,12 @@
         public System.Windows.Forms.TextBox textBox3;
         public System.Windows.Forms.Label label6;
         public System.Windows.Forms.Button button2;
-        public System.Windows.Forms.Button button3;
         public System.Windows.Forms.Label label9;
         public System.Windows.Forms.TextBox textBox6;
         public System.Windows.Forms.Label label10;
-        public System.Windows.Forms.TextBox textBox7;
         public System.Windows.Forms.GroupBox groupBox2;
-        public System.Windows.Forms.Button button4;
         public System.Windows.Forms.TextBox textBox2;
         public System.Windows.Forms.Label label5;
-        public System.Windows.Forms.Label label11;
         public System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         public System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         public System.Windows.Forms.DataGridViewTextBoxColumn Column2;
