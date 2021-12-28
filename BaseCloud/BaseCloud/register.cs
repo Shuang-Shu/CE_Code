@@ -22,6 +22,20 @@ namespace BaseCloud
             dbAddr = "8.136.81.68";
             dbId = "sa";
             dbPwd = "1234Abcd";
+            connect2DB();
+        }
+
+        public void connect2DB()
+        {
+            try
+            {
+                dsgn.connectDB(dbAddr, dbId, dbPwd);
+            }
+            catch
+            {
+                MessageBox.Show("连接失败!");
+                return;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,7 +52,7 @@ namespace BaseCloud
                 MessageBox.Show("连接失败!");
                 return;
             }
-            string cmdStr = "SELECT wname FORM designer WHERE workerno=" + userid;
+            string cmdStr = "SELECT isManager, pwd, company FROM designer WHERE workerno=\'" + userid+"\';";
             SqlCommand cmd = new SqlCommand(cmdStr, parent.myconn);
             SqlDataReader reader = cmd.ExecuteReader();
             if (!reader.Read())
@@ -48,14 +62,23 @@ namespace BaseCloud
             }
             else
             {
-                if (((int)reader[6]) != 1)
+                if (((int)reader[0]) != 1)
                 {
                     MessageBox.Show("无管理权限，请先注册！");
                     return;
                 }
+                else if ((string)reader[1] != pwd)
+                {
+                    MessageBox.Show("密码错误，请重试");
+                    return;
+                }
+                stageDataTran.workerno = userid;
+                stageDataTran.company = (string)reader[2];
+                reader.Close();
                 parent.d_p.readDB();
                 this.Hide();
                 mng.Show();
+                
             }
         }
 
@@ -73,7 +96,7 @@ namespace BaseCloud
                 MessageBox.Show("连接失败!");
                 return;
             }
-            string cmdStr = "SELECT wname FORM designer WHERE workerno=" + userid;
+            string cmdStr = "SELECT isManager, pwd, company FROM designer WHERE workerno=\'" + userid + "\';";
             SqlCommand cmd = new SqlCommand(cmdStr, parent.myconn);
             SqlDataReader reader = cmd.ExecuteReader();
             if (!reader.Read())
@@ -81,9 +104,30 @@ namespace BaseCloud
                 MessageBox.Show("无设计权限，请先注册！");
                 return;
             }
+            else if ((string)reader[1] != pwd)
+            {
+                MessageBox.Show("密码错误，请重试");
+                return;
+            }
+            stageDataTran.workerno = userid;
+            stageDataTran.company = (string)reader[2];
+            reader.Close();
             parent.d_p.readDB();
             this.Hide();
             dsgn.Show();
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SignIn temp = new SignIn();
+            temp.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ChangeDB temp = new ChangeDB(this);
+            temp.Show();
         }
     }
 }

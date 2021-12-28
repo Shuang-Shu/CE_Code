@@ -23,29 +23,10 @@ namespace BaseCloud
         private void button2_Click(object sender, EventArgs e)
         {
             designData.dnum = textBox1.Text;
-            designData.workno = comboBox1.Text;
             designData.area = textBox2.Text;
             designData.describe = textBox3.Text;
             pre.textBox7.Text = textBox1.Text;
             this.Hide();
-        }
-
-        public void refreshDesigner()
-        {
-            comboBox1.Items.Clear();
-            design parent = stageDataTran.parent;
-
-            string cmdStr = "SELECT workerno, wname FROM designer;";
-            SqlCommand cmd = new SqlCommand(cmdStr, parent.myconn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-                comboBox1.Items.Add(reader[0]+" "+reader[1]);
-            reader.Close();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ndsg.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)

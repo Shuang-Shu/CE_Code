@@ -98,15 +98,17 @@
             this.button3.TabIndex = 8;
             this.button3.Text = "注册";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(300, 181);
+            this.button4.Location = new System.Drawing.Point(250, 179);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(90, 23);
+            this.button4.Size = new System.Drawing.Size(140, 25);
             this.button4.TabIndex = 9;
             this.button4.Text = "更改数据库";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // register
             // 

@@ -22,6 +22,8 @@ namespace BaseCloud
         public static double dw;
         public static double dwl;
         public static double ZJ;
+        public static string workerno;
+        public static string company;
     }
 
     public static class designData

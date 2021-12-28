@@ -214,7 +214,6 @@ namespace BaseCloud
         private void button3_Click(object sender, EventArgs e)
         {
             dif.Show();
-            dif.refreshDesigner();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -358,7 +357,7 @@ namespace BaseCloud
         }
 
         private void button2_Click_1(object sender, EventArgs e)
-        {
+        { 
             if (saveDesignLog() < 0)
                 return;
             saveAll();
@@ -384,7 +383,7 @@ namespace BaseCloud
             }
             
             string dnum = designData.dnum;
-            string wnum = designData.workno;
+            string wnum = stageDataTran.workerno;
             string area = designData.area;
             string des = designData.describe;
 
@@ -394,7 +393,8 @@ namespace BaseCloud
             " \'"+dnum+"\',"+
             " \'"+wnum.Substring(0, 5)+"\',"+
             " N\'"+area+"\',"+
-            " N\'"+des+"\'"+
+            " N\'"+des+"\',"+
+            "GETDATE()"+
             " ); ";
 
             SqlCommand cmd = new SqlCommand(cmdStr, parent.myconn);

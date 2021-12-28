@@ -43,7 +43,6 @@ namespace BaseCloud
             {
                 MessageBox.Show("检查参数是否满足规定");
             }
-            pre.refreshDesigner();
             this.Hide();
         }
 

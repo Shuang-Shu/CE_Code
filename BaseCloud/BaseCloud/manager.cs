@@ -17,10 +17,13 @@ namespace BaseCloud
             InitializeComponent();
             mstc = new Manager_sttc();
             mng = new Manger_mng();
+            mauth = new Manager_author(this);
             mstc.TopLevel = false;
             mng.TopLevel = false;
+            mauth.TopLevel = false;
             mstc.Parent = panel1;
             mng.Parent = panel1;
+            mauth.Parent = panel1;
             rgst = rgst0;
         }
 
@@ -42,6 +45,14 @@ namespace BaseCloud
         {
             this.Hide();
             rgst.Show();
+        }
+
+        private void 申请管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            panel1.Controls.Add(mauth);
+            mauth.refreshList();
+            mauth.Show();
         }
     }
 }

@@ -28,9 +28,9 @@ namespace BaseCloud
             if (c == 0)
                 temp = "area";
             else
-                temp = "workerno";
+                temp = "designer.workerno";
             design parent = stageDataTran.parent;
-            string cmdStr = "SELECT DISTINCT "+temp+" FROM design";
+            string cmdStr = "SELECT DISTINCT "+temp+" FROM design JOIN designer ON design.workerno=designer.workerno WHERE designer.company=N\'"+stageDataTran.company+"\';";
 
             SqlCommand cmd = new SqlCommand(cmdStr, parent.myconn);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -51,7 +51,7 @@ namespace BaseCloud
                 temp = "workerno";
             design parent = stageDataTran.parent;
 
-            string cmdStr = "SELECT dnum FROM design WHERE "+temp+"=N\'"+choice+"\';";
+            string cmdStr = "SELECT dnum FROM design JOIN designer ON design.workerno=designer.workerno WHERE "+temp+"=N\'"+choice+"\' AND"+ " designer.company = N\'"+stageDataTran.company+"\';";
             SqlCommand cmd = new SqlCommand(cmdStr, parent.myconn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())

@@ -48,16 +48,16 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(109, 12);
+            this.textBox1.Location = new System.Drawing.Point(118, 12);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(216, 25);
+            this.textBox1.Size = new System.Drawing.Size(207, 25);
             this.textBox1.TabIndex = 1;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(109, 43);
+            this.textBox2.Location = new System.Drawing.Point(118, 43);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(216, 25);
+            this.textBox2.Size = new System.Drawing.Size(207, 25);
             this.textBox2.TabIndex = 3;
             // 
             // label2
@@ -71,9 +71,10 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(109, 74);
+            this.textBox3.Location = new System.Drawing.Point(118, 74);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(216, 25);
+            this.textBox3.PasswordChar = '*';
+            this.textBox3.Size = new System.Drawing.Size(207, 25);
             this.textBox3.TabIndex = 5;
             // 
             // label3
@@ -87,11 +88,11 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(148, 104);
+            this.button1.Location = new System.Drawing.Point(118, 105);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 36);
+            this.button1.Size = new System.Drawing.Size(177, 36);
             this.button1.TabIndex = 6;
-            this.button1.Text = "button1";
+            this.button1.Text = "确认";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -123,5 +124,6 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
+        private register pre;
     }
 }

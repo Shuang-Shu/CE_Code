@@ -134,5 +134,11 @@ namespace BaseCloud
             this.Hide();
             rgst.Show();
         }
+
+        private void 申请权限ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeAuthor temp = new ChangeAuthor();
+            temp.Show();
+        }
     }
 }

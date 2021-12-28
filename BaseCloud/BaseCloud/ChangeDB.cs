@@ -12,16 +12,18 @@ namespace BaseCloud
 {
     public partial class ChangeDB : Form
     {
-        public ChangeDB()
+        public ChangeDB(register pre0)
         {
             InitializeComponent();
+            pre = pre0;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string dbAddr = textBox1.Text;
-            string dbId = textBox2.Text;
-            string dbPwd = textBox3.Text;
+             pre.dbAddr = textBox1.Text;
+            pre.dbId = textBox2.Text;
+            pre.dbPwd = textBox3.Text;
+            pre.connect2DB();
             this.Close();
         }
     }
