@@ -48,7 +48,7 @@ namespace BaseCloud
             if (c == 0)
                 temp = "area";
             else
-                temp = "workerno";
+                temp = "designer.workerno";
             design parent = stageDataTran.parent;
 
             string cmdStr = "SELECT dnum FROM design JOIN designer ON design.workerno=designer.workerno WHERE "+temp+"=N\'"+choice+"\' AND"+ " designer.company = N\'"+stageDataTran.company+"\';";

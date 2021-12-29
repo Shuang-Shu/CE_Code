@@ -25,12 +25,16 @@ namespace BaseCloud
             mng.Parent = panel1;
             mauth.Parent = panel1;
             rgst = rgst0;
+            panel1.Controls.Add(mng);
+            mng.refreshData();
+            mng.Show();
         }
 
         private void 管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
             panel1.Controls.Add(mng);
+            mng.refreshData();
             mng.Show();
         }
 

@@ -225,7 +225,7 @@ namespace BaseCloud
             // loadDesig为导入设计用的窗口
         }
 
-        private void deleteDnum(string dnum)
+        public void deleteDnum(string dnum)
         {
             design parent = stageDataTran.parent;
             // 删除土层信息

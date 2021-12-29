@@ -18,7 +18,7 @@ namespace BaseCloud
             InitializeComponent();
             comboBox1.Items.Clear();
             comboBox1.Items.Add("设计者");
-            comboBox1.Items.Add("管理者");
+            comboBox1.Items.Add("管理员");
             comboBox1.Items.Add("删除");
         }
 

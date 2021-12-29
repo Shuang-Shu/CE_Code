@@ -77,8 +77,9 @@ namespace BaseCloud
                 reader.Close();
                 parent.d_p.readDB();
                 this.Hide();
+                mng.mstc.fullYears();
+                mng.mng.refreshData();
                 mng.Show();
-                
             }
         }
 

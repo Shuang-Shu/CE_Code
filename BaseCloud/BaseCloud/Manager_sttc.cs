@@ -26,6 +26,23 @@ namespace BaseCloud
                 comboBox2.Items.Add(temp2[i]);
         }
 
+        public void fullYears()
+        {
+            design parent = stageDataTran.parent;
+            string company = stageDataTran.company;
+            string cmdStr = "SELECT DISTINCT YEAR(date0)"+
+            " FROM"+
+            " design JOIN designer ON design.workerno = designer.workerno"+
+            " WHERE company = N\'"+company+"\';";
+            SqlCommand cmd = new SqlCommand(cmdStr, parent.myconn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            comboBox3.Items.Clear();
+            comboBox3.Items.Add("全部年份");
+            while (reader.Read())
+                comboBox3.Items.Add(((int)reader[0]).ToString());
+            reader.Close();
+        }
+
         public void drawchart(Chart chart, string[] name, int[] num, string title, int chartForm)
         {
             int sum = 0;
@@ -53,7 +70,6 @@ namespace BaseCloud
              }
             series1.Points.DataBindXY(name, num);
             chart.Series.Add(series1);
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -61,25 +77,30 @@ namespace BaseCloud
             design parent = stageDataTran.parent;
             string temp = comboBox1.Text;
             string cmdStr;
+            string isYear = " YEAR(date0)=\'" + comboBox3.Text + "\' AND";
+            if (comboBox3.Text == "全部年份")
+                isYear = "";
             if (temp == "地区")
             {
                 cmdStr = "SELECT area, COUNT(area)" +
-                " FROM design" +
+                " FROM design JOIN designer ON design.workerno = designer.workerno WHERE" +
+                isYear+
+                " designer.company=N\'"+stageDataTran.company+"\'"+
                 " GROUP BY area; ";
             }
             else if (temp == "设计者专业")
             {
                 cmdStr = "SELECT designer.major, COUNT(designer.major)" +
-                "  FROM" +
-                " design JOIN designer ON design.workerno = designer.workerno" +
-                " GROUP BY designer.major;";
+                " FROM design JOIN designer ON design.workerno = designer.workerno WHERE" +
+                isYear+
+                " designer.company=N\'" + stageDataTran.company + "\'" +" GROUP BY designer.major; ";
             }
             else if (temp == "设计者职称")
             {
                 cmdStr = "SELECT designer.title, COUNT(designer.title)" +
-                "  FROM" +
-                " design JOIN designer ON design.workerno = designer.workerno" +
-                " GROUP BY designer.title;";
+                " FROM design JOIN designer ON design.workerno = designer.workerno WHERE" +
+                isYear+
+                " designer.company=N\'" + stageDataTran.company + "\'" +" GROUP BY designer.title; ";
             }
             else
             {
@@ -118,6 +139,12 @@ namespace BaseCloud
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            fullYears();
+            button1_Click(null, null);
         }
     }
 }
