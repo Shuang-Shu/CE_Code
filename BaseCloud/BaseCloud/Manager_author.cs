@@ -134,7 +134,7 @@ namespace BaseCloud
                         if (reader.Read())
                         {
                             reader.Close();
-                            cmdStr = "UPDATE designer SET isManager=" + para5.ToString() + ";";
+                            cmdStr = "UPDATE designer SET isManager=" + para5.ToString() + "WHERE  workerno=\'"+workerno+"\';";
                             cmd = new SqlCommand(cmdStr, parent.myconn);
                             cmd.ExecuteNonQuery();
                         }
@@ -172,6 +172,7 @@ namespace BaseCloud
 
         private void button8_Click(object sender, EventArgs e)
         {
+            // 移除之前的选择
             int i = 0;
             for (int j = 0; j < listBox1.SelectedIndices.Count; ++i)
             {

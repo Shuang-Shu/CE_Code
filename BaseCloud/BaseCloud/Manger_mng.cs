@@ -30,14 +30,16 @@ namespace BaseCloud
             {
                 reader = cmd.ExecuteReader();
             }
-            catch
+            catch(SqlException ex)
             {
-                MessageBox.Show("检查设计号是否输入正确");
+                MessageBox.Show(ex.Errors[0].Message);
+                //MessageBox.Show("检查设计号是否输入正确");
                 return;
             }
             if (!reader.Read())
             {
                 MessageBox.Show("检查设计号是否输入正确");
+                reader.Close();
                 return;
             }
             textBox2.Text = (string)reader[0];
@@ -55,7 +57,7 @@ namespace BaseCloud
         private void button2_Click(object sender, EventArgs e)
         {
             design parent = stageDataTran.parent;
-            string cmdStr = "UPDATE design SET describe=N\'" + textBox2.Text + "\' WHERE dnum=" + textBox1.Text + ";";
+            string cmdStr = "UPDATE design SET describe=N\'" + textBox2.Text + "\' WHERE dnum=\'" + textBox1.Text + "\';";
             SqlCommand cmd = new SqlCommand(cmdStr, parent.myconn);
             try
             {
